@@ -18,7 +18,7 @@ app.controller('NewCardController',function($scope, $http, FlashCardsFactory){
 			if(err) console.error(err);
 			else {
 				console.log("successful "+data);
-				FlashCardsFactory.flashCardsObj.flashCards.push(newCard);
+				FlashCardsFactory.addFlashCard(newCard);
 				$scope.newCard = new CleanCard();
 				$scope.newCardForm.$setPristine();
 				$scope.newCardForm.$setUntouched();

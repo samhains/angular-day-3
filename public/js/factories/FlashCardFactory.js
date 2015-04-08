@@ -1,11 +1,10 @@
 app.factory('FlashCardsFactory', function ($http) {
-
-    return {
-        flashCards: [],
+    var flashCards= [];
+    return {   
         getFlashCards: function () {
             return $http.get('/cards').then(function (response) {
-                this.flashCards = response.data;
-                return this.flashCards;
+                flashCards = response.data;
+                return flashCards;
             });
         },
         getFlashCardsByCategory: function (category) {
@@ -17,9 +16,12 @@ app.factory('FlashCardsFactory', function ($http) {
             };
 
             return $http.get('/cards', configObj).then(function (response) {
-                this.flashCards = response.data;
-                return this.flashCards;
+                flashCards = response.data;
+                return flashCards;
             });
+        },
+        addFlashCard: function(newCard){
+            flashCards.push(newCard);
         }
     };
 
